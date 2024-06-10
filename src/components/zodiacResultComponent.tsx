@@ -2,12 +2,12 @@
 export default function ZodiacResult({
   displayName,
   age,
+  zodiac,
 }: {
   displayName: string | null;
   age: number | null;
+  zodiac: string | null;
 }) {
-
-
   return (
     <div className="flex flex-col bg-purple-200 h-full rounded-lg">
       <div className="bg-purple-300 p-10 rounded-lg">
@@ -15,7 +15,7 @@ export default function ZodiacResult({
           Hello, {displayName}
         </h1>
         <h1 className="text-2xl font-bold text-purple-800">
-          Your Zodiac Sign is: Aries
+          Your Zodiac Sign is: {zodiac}
         </h1>
         <h1 className="text-xl font-semibold text-purple-800">
           You are {age} years old.

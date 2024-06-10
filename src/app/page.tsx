@@ -4,6 +4,7 @@ import ZodiacForm from "@/components/zodiacFormComponent";
 import ZodiacResult from "@/components/zodiacResultComponent";
 import { useState } from "react";
 import convertDateToYear from "../../utils/convertDateToYear";
+import getZodiac from "../../utils/getZodiac";
 
 export default function Home() {
   const [zodiac, setZodiac] = useState<string | null>(null);
@@ -23,6 +24,7 @@ export default function Home() {
     }
     setDisplayName(name);
     setAge(convertDateToYear(birthdate));
+    setZodiac(getZodiac(birthdate));
     console.log({ name, birthdate, zodiac });
   };
 
@@ -42,7 +44,7 @@ export default function Home() {
         {
           // If displayName is not null, display the ZodiacResult component
           displayName ? (
-            <ZodiacResult displayName={displayName} age={age} />
+            <ZodiacResult displayName={displayName} age={age} zodiac={zodiac} />
           ) : (
             <div className="flex flex-col bg-purple-200 h-full rounded-lg items-center justify-center p-10">
               <h1 className="text-xl font-semibold italic text-purple-400">
