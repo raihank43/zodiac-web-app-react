@@ -1,8 +1,8 @@
-export default function ZodiacResult() {
+export default function ZodiacResult({ displayName }: { displayName: string | null }) {
   return (
     <div className="flex flex-col bg-purple-200 h-full rounded-lg">
       <div className="bg-purple-300 p-10 rounded-lg">
-        <h1 className="text-4xl font-black text-purple-800">Hello, Raihan</h1>
+        <h1 className="text-4xl font-black text-purple-800">Hello, {displayName}</h1>
         <h1 className="text-2xl font-bold text-purple-800">
           Your Zodiac Sign is: Aries
         </h1>
