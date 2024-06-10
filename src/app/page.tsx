@@ -3,13 +3,14 @@ import ZodiacList from "@/components/zodiacListComponent";
 import ZodiacForm from "@/components/zodiacFormComponent";
 import ZodiacResult from "@/components/zodiacResultComponent";
 import { useState } from "react";
-import { Dispatch, SetStateAction } from "react";
+import convertDateToYear from "../../utils/convertDateToYear";
 
 export default function Home() {
   const [zodiac, setZodiac] = useState<string | null>(null);
   const [name, setName] = useState<string | null>(null);
   const [displayName, setDisplayName] = useState<string | null>(null);
   const [birthdate, setBirthdate] = useState<Date | null>(null);
+  const [age, setAge] = useState<number | null>(null);
 
   const handleFindZodiac = () => {
     if (!birthdate) {
@@ -21,6 +22,7 @@ export default function Home() {
       return;
     }
     setDisplayName(name);
+    setAge(convertDateToYear(birthdate));
     console.log({ name, birthdate, zodiac });
   };
 
@@ -37,7 +39,18 @@ export default function Home() {
           setBirthdate={setBirthdate}
           handleFindZodiac={handleFindZodiac}
         />
-        <ZodiacResult displayName={displayName} />
+        {
+          // If displayName is not null, display the ZodiacResult component
+          displayName ? (
+            <ZodiacResult displayName={displayName} age={age} />
+          ) : (
+            <div className="flex flex-col bg-purple-200 h-full rounded-lg items-center justify-center p-10">
+              <h1 className="text-xl font-semibold italic text-purple-400">
+                Please enter your name and birthdate
+              </h1>
+            </div>
+          )
+        }
       </section>
     </main>
   );

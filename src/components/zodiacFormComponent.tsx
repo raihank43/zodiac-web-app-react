@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { DatePicker } from "./ui/calenderPopover";
 import { Dispatch, SetStateAction } from "react";
 
 export default function ZodiacForm({
@@ -28,7 +27,11 @@ export default function ZodiacForm({
           placeholder="Enter your name"
           onChange={(e) => setName(e.target.value)}
         />
-        <DatePicker setBirthdate={setBirthdate} />
+        <Input
+          type="date"
+          className="p-2 border border-black rounded-lg"
+          onChange={(e) => setBirthdate(new Date(e.target.value))}
+        />
 
         <Button
           className="bg-purple-900 text-white hover:bg-purple-500 "
