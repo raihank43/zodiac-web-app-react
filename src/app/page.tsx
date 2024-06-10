@@ -1,5 +1,7 @@
 import ZodiacList from "@/components/zodiacListComponent";
 import ZodiacForm from "@/components/zodiacFormComponent";
+import ZodiacResult from "@/components/zodiacResultComponent";
+
 export default function Home() {
   return (
     <main className="flex min-h-screen p-10 gap-2">
@@ -8,8 +10,9 @@ export default function Home() {
         <ZodiacList />
       </section>
 
-      <section className="flex flex-col rounded-lg border-purple-200 border-2 w-1/2 p-10">
+      <section className="flex flex-col rounded-lg border-purple-200 border-2 w-1/2 p-10 gap-10">
         <ZodiacForm />
+        <ZodiacResult />
       </section>
     </main>
   );

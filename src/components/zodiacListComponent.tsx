@@ -11,7 +11,7 @@ import {
 export default function ZodiacList() {
   return (
     <Table className="border-2 bg-white">
-      <TableCaption>A list of your recent invoices.</TableCaption>
+      {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
       <TableHeader>
         <TableRow>
           <TableHead>Tanggal Mulai</TableHead>
