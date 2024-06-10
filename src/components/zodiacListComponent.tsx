@@ -7,16 +7,32 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { IoMdTime } from "react-icons/io";
+import { IoIosTime } from "react-icons/io";
+import { TbZodiacTaurus } from "react-icons/tb";
 
 export default function ZodiacList() {
   return (
-    <Table className="border-2 bg-white">
+    <Table className=" rounded-lg bg-white">
       {/* <TableCaption>A list of your recent invoices.</TableCaption> */}
       <TableHeader>
         <TableRow>
-          <TableHead>Tanggal Mulai</TableHead>
-          <TableHead>Tanggal Akhir</TableHead>
-          <TableHead>Zodiac</TableHead>
+          <TableHead className="flex items-center gap-2 font-bold">
+            <IoMdTime className="text-lg" />
+            Tanggal Mulai
+          </TableHead>
+          <TableHead>
+            <div className="flex gap-2 font-bold">
+              <IoIosTime className="text-lg" />
+              Tanggal Akhir
+            </div>
+          </TableHead>
+          <TableHead>
+            <div className="flex gap-2 font-bold">
+              <TbZodiacTaurus className="text-lg" />
+              Zodiac
+            </div>
+          </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
