@@ -3,8 +3,9 @@ import ZodiacList from "@/components/zodiacListComponent";
 import ZodiacForm from "@/components/zodiacFormComponent";
 import ZodiacResult from "@/components/zodiacResultComponent";
 import { useState } from "react";
-import convertDateToYear from "../../utils/convertDateToYear";
-import getZodiac from "../../utils/getZodiac";
+import convertDateToYear from "../utils/convertDateToYear";
+import getZodiac from "../utils/getZodiac";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function Home() {
   const [zodiac, setZodiac] = useState<string | null>(null);
@@ -13,15 +14,22 @@ export default function Home() {
   const [birthdate, setBirthdate] = useState<Date | null>(null);
   const [age, setAge] = useState<number | null>(null);
   const [zodiacMessage, setZodiacMessage] = useState<string | null>("");
+  const { toast } = useToast();
 
   const handleFindZodiac = () => {
     if (!birthdate) {
-      alert("Please enter your birthdate");
-      return;
+      return toast({
+        title: "Something went wrong!",
+        description: "Please enter your birthdate",
+        variant: "destructive",
+      });
     }
     if (!name) {
-      alert("Please enter your name");
-      return;
+      return toast({
+        title: "Something went wrong!",
+        description: "Please enter your name",
+        variant: "destructive",
+      });
     }
     setDisplayName(name);
     setAge(convertDateToYear(birthdate));
