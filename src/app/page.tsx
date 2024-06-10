@@ -28,7 +28,15 @@ export default function Home() {
     const zodiac = getZodiac(birthdate);
     setZodiac(zodiac.zodiac);
     setZodiacMessage(zodiac.message);
-    console.log({ name, birthdate, zodiac });
+  };
+
+  const resetForm = () => {
+    setDisplayName(null);
+    setAge(null);
+    setZodiac(null);
+    setZodiacMessage(null);
+    setBirthdate(null);
+    setName(null);
   };
 
   return (
@@ -43,6 +51,9 @@ export default function Home() {
           setName={setName}
           setBirthdate={setBirthdate}
           handleFindZodiac={handleFindZodiac}
+          resetForm={resetForm}
+          name={name}
+          birthdate={birthdate}
         />
         {
           // If displayName is not null, display the ZodiacResult component

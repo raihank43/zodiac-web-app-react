@@ -6,10 +6,16 @@ export default function ZodiacForm({
   setName,
   setBirthdate,
   handleFindZodiac,
+  resetForm,
+  name,
+  birthdate,
 }: {
   setName: Dispatch<SetStateAction<string | null>>;
   setBirthdate: Dispatch<SetStateAction<Date | null>>;
   handleFindZodiac: () => void;
+  resetForm: () => void;
+  name: string | null;
+  birthdate: Date | null;
 }) {
   return (
     <div className="flex flex-col ">
@@ -26,11 +32,13 @@ export default function ZodiacForm({
           className="p-2 border border-black rounded-lg "
           placeholder="Enter your name"
           onChange={(e) => setName(e.target.value)}
+          value={name || ""}
         />
         <Input
           type="date"
           className="p-2 border border-black rounded-lg"
           onChange={(e) => setBirthdate(new Date(e.target.value))}
+          value={birthdate ? birthdate.toISOString().split("T")[0] : ""}
         />
 
         <Button
@@ -39,7 +47,10 @@ export default function ZodiacForm({
         >
           Find My Zodiac Sign
         </Button>
-        <Button className="bg-purple-200 text-purple-900 hover:bg-purple-700 hover:text-white">
+        <Button
+          className="bg-purple-200 text-purple-900 hover:bg-purple-700 hover:text-white"
+          onClick={resetForm}
+        >
           Reset
         </Button>
       </div>
