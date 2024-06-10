@@ -3,10 +3,12 @@ export default function ZodiacResult({
   displayName,
   age,
   zodiac,
+  zodiacMessage,
 }: {
   displayName: string | null;
   age: number | null;
   zodiac: string | null;
+  zodiacMessage: string | null;
 }) {
   return (
     <div className="flex flex-col bg-purple-200 h-full rounded-lg">
@@ -22,9 +24,7 @@ export default function ZodiacResult({
         </h1>
       </div>
 
-      <p className="text-lg text-purple-700 p-10">
-        You are a natural leader and have a strong sense of self.
-      </p>
+      <p className="text-lg text-purple-700 p-10">{zodiacMessage}</p>
     </div>
   );
 }

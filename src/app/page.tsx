@@ -12,6 +12,7 @@ export default function Home() {
   const [displayName, setDisplayName] = useState<string | null>(null);
   const [birthdate, setBirthdate] = useState<Date | null>(null);
   const [age, setAge] = useState<number | null>(null);
+  const [zodiacMessage, setZodiacMessage] = useState<string | null>("");
 
   const handleFindZodiac = () => {
     if (!birthdate) {
@@ -24,7 +25,9 @@ export default function Home() {
     }
     setDisplayName(name);
     setAge(convertDateToYear(birthdate));
-    setZodiac(getZodiac(birthdate));
+    const zodiac = getZodiac(birthdate);
+    setZodiac(zodiac.zodiac);
+    setZodiacMessage(zodiac.message);
     console.log({ name, birthdate, zodiac });
   };
 
@@ -44,7 +47,12 @@ export default function Home() {
         {
           // If displayName is not null, display the ZodiacResult component
           displayName ? (
-            <ZodiacResult displayName={displayName} age={age} zodiac={zodiac} />
+            <ZodiacResult
+              displayName={displayName}
+              age={age}
+              zodiac={zodiac}
+              zodiacMessage={zodiacMessage}
+            />
           ) : (
             <div className="flex flex-col bg-purple-200 h-full rounded-lg items-center justify-center p-10">
               <h1 className="text-xl font-semibold italic text-purple-400">
