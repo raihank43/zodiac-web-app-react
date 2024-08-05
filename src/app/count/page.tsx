@@ -9,7 +9,7 @@ export default function Count() {
   };
   return (
     <div className="flex justify-center items-center min-h-screen gap-10">
-      <Button onClick={handleClick}>Dizkir</Button>
+      <Button onClick={handleClick}>Counting</Button>
       <div className="text-4xl font-bold">{count}</div>
     </div>
   );
